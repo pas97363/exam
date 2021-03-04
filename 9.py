@@ -5,10 +5,10 @@ epoch = 3
 class Perceptron(object):
     def __init__(self, input_size, learning_rate=0.2):
         self.learning_rate = learning_rate
-        self.weights = np.zeros(input_size + 1) # zero init for weights and bias    
+        self.weights = np.zeros(input_size + 1)
            
     def predict(self, x):
-         return (np.dot(x, self.weights[1:]) + self.weights[0]) # X.W + B 
+         return (np.dot(x, self.weights[1:]) + self.weights[0])
                 
     def train(self, x, y, weights):           
         for inputs, label in zip(x, y):
@@ -19,9 +19,9 @@ class Perceptron(object):
                 y_out = -1
             else:
                 y_out = 0
-            if y_out != label: # updating the net on incorrect prediction                    
-                self.weights[1:] += self.learning_rate * label * inputs # W = alpha * Y * X
-                self.weights[0] += self.learning_rate * label  # B = alpha * Y         
+            if y_out != label:                    
+                self.weights[1:] += self.learning_rate * label * inputs
+                self.weights[0] += self.learning_rate * label
             print(inputs, net_in, label, y_out, self.weights)
  
 if __name__ == "__main__":
